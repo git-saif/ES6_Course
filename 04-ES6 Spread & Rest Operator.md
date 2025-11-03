@@ -111,8 +111,8 @@ console.log(mergedUser); // { name: "Saiful", age: 25, city: "Dhaka" }
 
 - **Array clone**: নতুন array তৈরি হয়।
 - **Array merge**: একাধিক array একত্রে যুক্ত করা যায়।
-- **Object clone/merge**: Object copy বা merge করা যায়।
 - **String to array**: প্রতিটি character আলাদা element হয়।
+- **Object clone/merge**: Object copy বা merge করা যায়।
 ##### Use Case:
 
 1. Array বা Object কপি করা।
