@@ -220,3 +220,126 @@ let a = 10;
 - Modern JS-এ **var ব্যবহার করা পরিহার করা** উচিত।
 
 ---
+## **var, let, const এগুলোর পার্থক্য:**
+
+`var`, `let`, এবং `const` — এই তিনটি JavaScript-এ **variable declare** করার জন্য ব্যবহৃত হয়।  
+তবে এদের মধ্যে কিছু গুরুত্বপূর্ণ **পার্থক্য** রয়েছে (scope, re-declaration, re-assignment ইত্যাদির দিক থেকে)।
+
+---
+
+## 1. var
+
+### 🔹 Definition:
+
+`var` হলো পুরোনো পদ্ধতি (ES5 পর্যন্ত)।  
+এটি **function-scoped** এবং **hoisted** হয়।
+
+### 🔹 বৈশিষ্ট্য:
+
+- ✅ **Re-declare করা যায়** (same scope এ)
+- ✅ **Re-assign করা যায়**
+- ⚠️ **Function scoped** (block scoped নয়)
+- ⚠️ **Hoisting হয়** (variable declaration উপরে উঠে যায়)
+### 🔹 Example:
+
+```js
+var name = "Saif";
+var name = "Islam"; // ✅ re-declare possible
+name = "Rahman"; // ✅ re-assign possible
+
+if (true) {
+  var age = 25; // function scoped
+}
+console.log(age); // ✅ 25 (accessible outside block)
+```
+
+---
+
+## 2. let
+
+### 🔹 Definition:
+
+`let` হলো **ES6 (2015)** এ নতুন করে আনা keyword।  
+এটি **block-scoped** ({} এর ভিতরে সীমাবদ্ধ)।
+
+### 🔹 বৈশিষ্ট্য:
+
+- ❌ **Re-declare করা যায় না** (same scope এ)
+- ✅ **Re-assign করা যায়**
+- ✅ **Block scoped**
+- ⚠️ Hoisting হয়, তবে **temporal dead zone** এর কারণে আগে ব্যবহার করা যায় না
+
+### 🔹 Example:
+
+```js
+let name = "Saif";
+// let name = "Islam"; ❌ Error: already declared
+name = "Rahman"; // ✅ re-assign possible
+
+if (true) {
+  let city = "Dhaka";
+  console.log(city); // ✅ Dhaka
+}
+// console.log(city); ❌ Error: not defined (block scoped)
+```
+
+---
+
+## 3. const
+
+### 🔹 Definition:
+
+`const` ও ES6 থেকে এসেছে।  
+এটি **block-scoped**, এবং **constant (unchangeable)** মান রাখে।
+
+### 🔹 বৈশিষ্ট্য:
+
+- ❌ **Re-declare করা যায় না**
+- ❌ **Re-assign করা যায় না**
+- ✅ **Block scoped**
+- ⚠️ Object/Array এর ক্ষেত্রে **property পরিবর্তন করা যায়**, তবে variable নিজে re-assign করা যায় না
+
+### 🔹 Example:
+
+```js
+const country = "Bangladesh";
+// country = "India"; ❌ Error: can't reassign
+
+if (true) {
+  const capital = "Dhaka";
+  console.log(capital); // ✅ Dhaka
+}
+// console.log(capital); ❌ Error: not defined
+```
+
+👉 **Object এর ক্ষেত্রে:**
+
+```js
+const person = { name: "Saif", age: 25 };
+person.age = 30; // ✅ allowed (property পরিবর্তন করা যায়)
+console.log(person); // { name: "Saif", age: 30 }
+
+// person = { name: "Rahim" }; ❌ Error: re-assign not allowed
+```
+
+---
+
+## 🧾 Summery:
+
+|Feature / Keyword|var|let|const|
+|---|---|---|---|
+|**Scope**|Function scoped|Block scoped|Block scoped|
+|**Re-declare**|✅ Possible|❌ Not allowed|❌ Not allowed|
+|**Re-assign**|✅ Possible|✅ Possible|❌ Not allowed|
+|**Hoisting**|✅ Yes (initialized with `undefined`)|⚠️ Yes (TDZ error before declaration)|⚠️ Yes (TDZ error before declaration)|
+|**Introduced In**|ES5 (Old JS)|ES6 (Modern JS)|ES6 (Modern JS)|
+
+---
+
+## 🧠 Use Cases (Best Practice):
+
+✅ **`const`** – Default choice; use it when value should not change  
+✅ **`let`** – When variable value needs to change later  
+⚠️ **`var`** – Avoid using; it causes confusion due to function-scope & hoisting issues
+
+---
