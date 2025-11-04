@@ -69,7 +69,59 @@ const [var1, var2, var3] = array;
 এটি array-এর index অনুযায়ী মান অ্যাসাইন করে।  
 অর্থাৎ, প্রথম মান প্রথম ভ্যারিয়েবলে, দ্বিতীয় মান দ্বিতীয় ভ্যারিয়েবলে ইত্যাদি।
 
-##### examples:
+##### Examples (Without Destructuring):
+
+```js
+// Without Function:
+let numbers = [10, 20, 30];
+
+let x = numbers[0];
+let y = numbers[1];
+let z = numbers[2];
+console.log({ x, y, z });
+
+// With Funciton:
+function getNum() {
+  return [10, 20, 30];
+}
+let numbers = getNum();
+
+let x = numbers[0];
+let y = numbers[1];
+let z = numbers[2];
+
+console.log({ x, y, z });
+```
+
+**Output:**
+
+```
+	{x: 10, y: 20, z: 30}
+```
+
+##### Examples (With Destructuring):
+
+```js
+// Without Function:
+let nums = [70, 80, 90];
+let [a, b, c] = nums;
+
+console.log({ a, b, c });
+
+// With Fucntion:
+function getNum() {
+  return [70, 80, 90];
+}
+let [a, b, c] = getNum();
+console.log({ a, b, c });
+```
+
+**Output:**
+```
+	{a: 70, b: 80, c: 90}
+```
+
+**Others Examples:**
 
 ```javascript
 const colors = ["red", "green", "blue"];
