@@ -151,9 +151,17 @@ for (let char of string) {
 
 ```javascript
 for (let letter of "HELLO") {
-  console.log(letter);
+  console.log("Output: " + letter);
 }
-// Output: H E L L O
+```
+
+**Output:**
+
+```
+Output: H
+Output: E
+Output: L
+Output: O
 ```
 
 ##### **Explanation:**
