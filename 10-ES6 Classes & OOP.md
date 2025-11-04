@@ -12,15 +12,11 @@ class Person {
     this.name = name;
     this.age = age;
   }
-
-  greet() {
-    console.log(`Hello, my name is ${this.name}`);
-  }
 }
 
-// Creating an object
-const p1 = new Person("Saiful", 25);
-p1.greet(); // Hello, my name is Saiful
+// object creation
+const store = new Person( "Saif", 22);
+console.log(store);  // Output: Person {name: 'Saif', age: 22}
 ```
 
 ---
@@ -114,6 +110,49 @@ s1.display(); // Rafi has grade A
 
 - Always use constructor for initialization
 - Use methods for behavior
+
+```js
+
+// Class declaration
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Method যোগ করা হয়েছে
+  greet() {
+    console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+  }
+}
+
+// একাধিক object (instance) তৈরি করা হলো
+const p1 = new Person("Saiful", 25);
+const p2 = new Person("Ishraq", 13);
+const p3 = new Person("Tuhin");
+
+// প্রত্যেক object-এর নিজস্ব data আছে
+console.log(p1);
+console.log(p2);
+console.log(p3);
+
+// প্রত্যেক object তার নিজের method call করতে পারে
+p1.greet();
+p2.greet();
+p3.greet();
+```
+
+**Output:**
+
+```
+Person {name: 'Saiful', age: 25}
+Person {name: 'Ishraq', age: 13}
+Person {name: 'Tuhin', age: undefined}
+
+Hello, my name is Saiful and I'm 25 years old.
+Hello, my name is Ishraq and I'm 13 years old.
+Hello, my name is Tuhin and I'm undefined years old.
+```
 
 ---
 ### **2. Type-2: Inheritance (extends & super)**
