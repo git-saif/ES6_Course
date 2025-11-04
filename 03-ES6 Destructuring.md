@@ -121,7 +121,57 @@ console.log({ a, b, c });
 	{a: 70, b: 80, c: 90}
 ```
 
-**Others Examples:**
+##### Examples (Destructuring With Un-Defined type):
+
+```js
+// Without Function:
+let nums = [70, 80];
+let [a, b, c] = nums;
+
+console.log({ a, b, c });
+
+// With Function:
+function getNum() {
+  return [70, 80];
+}
+let [a, b, c] = getNum();
+console.log({ a, b, c });
+```
+
+**Output:**
+```
+	{a: 70, b: 80, c: undefined}
+```
+
+##### Examples (Destructuring with Rest Parameter):
+
+```js
+// Without Function
+let [x, y, ...args] = [70, 80, 90, 100, 200, 300];
+
+console.log({ x, y, args });
+
+
+// With Function
+function getScores() {
+  return [70, 80, 90, 100, 200, 300];
+}
+
+let [x, y, ...args] = getScores();
+
+console.log({ x, y, args });
+console.log({ x, y, args });
+```
+
+**Output:**
+```
+{x: 70, y: 80, args: Array(4)}
+args: Array(4)
+0: 90
+1: 100
+2: 200
+3: 300
+```
 
 ```javascript
 const colors = ["red", "green", "blue"];
