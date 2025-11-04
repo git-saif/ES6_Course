@@ -237,33 +237,122 @@ const {prop1, prop2} = object;
 এটি object-এর property name অনুযায়ী মান অ্যাসাইন করে।  
 Variable name এবং property name এক হতে হবে।
 
-##### examples:
+##### Examples (Basic Object Destructuring):
 
-```javascript
-const user = { name: "Saiful", age: 25, country: "Bangladesh" };
-const { name, age } = user;
-console.log(name, age); // Output: Saiful 25
-
-// Default values
-const { city = "Dhaka" } = user;
-console.log(city); // Output: Dhaka
-
-// Renaming variable
-const { name: userName, age: userAge } = user;
-console.log(userName, userAge); // Output: Saiful 25
-
-// Nested destructuring
-const student = {
-  info: { id: 1, name: "Rafi" },
-  scores: { math: 90, english: 85 }
+```js
+let person = {
+	name: "Saif",
+	age: 20
 };
-const {
-  info: { name: studentName },
-  scores: { math }
-} = student;
-console.log(studentName, math); // Output: Rafi 90
+let { name, age } = person;
+console.log(name, age); // Output: Saif 20
 ```
 
+---
+
+##### Examples (Variable Name Change (Alias))
+
+```js
+let person = {
+	name: "Saif",
+	age: 20
+};
+let { name: fullName, age: years } = person;
+console.log(fullName, years); // Output: Saif 20
+```
+
+> এখানে `name` property টাকে `fullName` নামে নতুন variable এ রাখা হয়েছে।
+
+---
+
+##### Examples (Destructuring with Default Value)
+
+```js
+let person = { 
+	name: "Saif" 
+};
+let { name, age = 18 } = person;
+console.log(name, age); // Output: Saif 18
+```
+
+> যদি object এ `age` না থাকে, তাহলে default value `18` ব্যবহার হবে।
+
+---
+
+##### Examples (Nested Object Destructuring)
+
+```js
+let user = {
+  id: 1,
+  info: {
+    firstName: "Saif",
+    lastName: "Islam",
+  },
+};
+
+let {
+  info: { firstName, lastName },
+} = user;
+
+console.log(firstName, lastName); // Output: Saif Islam
+```
+
+> Nested object এর ভিতর থেকেও মান বের করা যায়।
+
+---
+
+##### Examples (Object Destructuring with Rest Operator)
+
+```js
+let person = {
+	name: "Saif",
+	age: 20,
+	city: "Dhaka",
+	country: "Bangladesh"
+};
+let { name, ...others } = person;
+
+console.log(name);    // Output: Saif
+console.log(others);  // Output: { age: 20, city: "Dhaka", country: "Bangladesh" }
+```
+
+> `...others` বাকিগুলোকে একত্রে নতুন object হিসেবে নেয়।
+
+---
+
+##### Examples (Function Parameter Destructuring)
+
+```js
+function display({ name, age }) {
+  console.log(`Name: ${name}, Age: ${age}`);
+}
+
+display({ name: "Saif", age: 20 }); 
+// Output: Name: Saif, Age: 20
+```
+
+> Function এ সরাসরি destructuring করা যায়।
+
+---
+
+##### Examples (Nested + Default + Alias একসাথে)
+
+```js
+let user = {
+  info: {
+    firstName: "Saif",
+    lastName: "Islam",
+  },
+};
+
+let {
+  info: { firstName: f = "Unknown", lastName: l = "Unknown" },
+} = user;
+
+console.log(f, l); // Output: Saif Islam
+```
+
+---
 ##### Explanation:
 
 - Default value তখন কাজ করে যখন property undefined থাকে।
