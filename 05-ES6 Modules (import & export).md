@@ -24,7 +24,7 @@ import { name, greet } from './module.js';
 ---
 ### **Example:**
 
-#### 📁 `math.js`
+#### 📁 `module.js`
 
 ```javascript
 export const PI = 3.1416;
@@ -33,13 +33,19 @@ export function add(a, b) {
   return a + b;
 }
 ```
-#### 📁 `app.js`
+#### 📁 `main.js`
 
 ```javascript
-import { PI, add } from './math.js';
+import { PI, add } from './module.js';
 
 console.log(PI);        // 3.1416
 console.log(add(5, 10)); // 15
+```
+
+#### 📁 `index.html`
+
+```html
+   <script src="main.js" type="module"></script>
 ```
 
 ---
